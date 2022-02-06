@@ -1,0 +1,34 @@
+// Sweet Class Diagram
+// -------------------
+
+// Chain elements like this
+[AddressBookManager]<>->[AddressBookSaver]
+[AddressBookManager]<>->[AddressBookFetcher]
+[AddressBookManager]<>-*>[AddressBook]
+[AddressBook]++-*>[Entry]
+[AddressBookSaver]
+[AddressBookFetcher]
+[UniqueContactInfo]^[PhoneNumber]
+[UniqueContactInfo]^[Email]
+[ContactInfo]^[UniqueContactInfo]
+[ContactInfo]^[Address]
+[ContactInfo]^[Name]
+
+[Entry]++->[Address]
+[Entry]++->[PhoneNumber]
+[Entry]++->[Email]
+[Entry]++->[Name]
+
+// Add notes
+
+// Add more detail
+[<<abstract>>UniqueContactInfo]
+[<<abstract>>ContactInfo|-info: SetOfT|+setInfo(...T): void;]
+[Address|+set(country, region, city, street, number: int): void; +getCountry(): String; +getRegion(): String; +getCity(): String; +getStreet():String; +getHouse(): int]
+[PhoneNumber|-number:long|+set(number:long): void; +get(): long]
+[Name|-firstName: String; -secondName: String|+getFirstName():String; +getSecondName(): String; +setName(first: String, second: String); +setFirstName(first: String); +setSecondName(second:String);]
+[Email|-email:String; -pattern: final Pattern|+setEmail(email:String):void; +getEmail():String]
+
+[AddressBookSaver|-defaultSavePath: String|+AddressBookSaver(AddressBook:List); +AddressBookSaver(AddressBook: List, savePath:String)|+save(): void;]++-*>[AddressBook|-name:String;]
+
+[AddressBookFetcher|-defaultSavePath: String|+AddressBookFetcher(); +AddressBookFetcher(savePath:String)|+fetch(): AdressBook*;]++-*>[AddressBook|-name:String;]
