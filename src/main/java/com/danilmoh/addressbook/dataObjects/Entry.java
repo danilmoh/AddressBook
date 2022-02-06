@@ -1,4 +1,4 @@
-package com.danilmoh.addressbook.dataObjects.dataObjects;
+package com.danilmoh.addressbook.dataObjects;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

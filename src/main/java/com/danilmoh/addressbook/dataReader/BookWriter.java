@@ -1,6 +1,6 @@
-package com.danilmoh.addressbook.dataObjects.dataReader;
+package com.danilmoh.addressbook.dataReader;
 
-import com.danilmoh.addressbook.dataObjects.dataObjects.AddressBook;
+import com.danilmoh.addressbook.dataObjects.AddressBook;
 
 import java.io.FileWriter;
 import java.io.IOException;

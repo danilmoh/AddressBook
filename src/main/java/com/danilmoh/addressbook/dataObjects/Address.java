@@ -1,4 +1,4 @@
-package com.danilmoh.addressbook.dataObjects.dataObjects;
+package com.danilmoh.addressbook.dataObjects;
 
 public class Address {
     private String country;

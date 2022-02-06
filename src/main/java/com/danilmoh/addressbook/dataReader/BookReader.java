@@ -1,4 +1,4 @@
-package com.danilmoh.addressbook.dataObjects.dataReader;
+package com.danilmoh.addressbook.dataReader;
 
 public class BookReader {
     /*

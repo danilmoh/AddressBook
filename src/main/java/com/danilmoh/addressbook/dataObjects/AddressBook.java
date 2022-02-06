@@ -1,4 +1,4 @@
-package com.danilmoh.addressbook.dataObjects.dataObjects;
+package com.danilmoh.addressbook.dataObjects;
 
 import java.util.HashMap;
 import java.util.Map;
