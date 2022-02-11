@@ -1,4 +1,4 @@
-package com.danilmoh.addressbook.dataObjects;
+package com.danilmoh.addressbook.dataObjects.entryObjects;
 
 import com.danilmoh.addressbook.dataObjects.entryObjects.PhoneNumber;
 import org.junit.jupiter.api.BeforeEach;

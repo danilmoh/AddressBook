@@ -25,7 +25,11 @@ public class Name extends ContactInfo<String> {
         } else if(strings.length == 1){
             super.info.set(0, strings[0]);
         }
+    }
 
+    @Override
+    public String toString() {
+        return this.getFirstName() + " " + this.getLastName();
     }
 
     public void setFirstName(String firstName) {

@@ -23,6 +23,11 @@ public class Email extends UniqueContactInfo<String> {
         }
     }
 
+    @Override
+    public String toString() {
+        return this.getValue();
+    }
+
     public void setValue(String email) {
         NonNullArrayRequirer.requireNonNull(email);
 
