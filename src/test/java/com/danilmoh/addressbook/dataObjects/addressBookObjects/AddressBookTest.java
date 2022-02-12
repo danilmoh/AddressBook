@@ -5,19 +5,25 @@ import com.danilmoh.addressbook.dataObjects.entryObjects.Address;
 import com.danilmoh.addressbook.dataObjects.entryObjects.Email;
 import com.danilmoh.addressbook.dataObjects.entryObjects.Name;
 import com.danilmoh.addressbook.dataObjects.entryObjects.PhoneNumber;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class AddressBookTest {
 
     AddressBook addressBook;
 
-    List<Entry> entries = new ArrayList<>();
+    List<Entry> entries;
+
+    @BeforeEach
+    void setup() {
+        this.addressBook = new AddressBook("address book");
+        this.entries = new ArrayList<>();
+    }
 
     Entry entry9 = new Entry(
             new Name("firstName"+9,"lastName"+9),
@@ -27,8 +33,9 @@ public class AddressBookTest {
     );
 
     void defaultAddressBook() {
-        this.addressBook = new AddressBook("address book");
         entries.clear();
+//        addressBook.getEntries().clear();
+        addressBook = new AddressBook("address book");
         for(int i = 0; i < 10; i++){
             Entry currentEntry = new Entry(
                     new Name("firstName"+i,"lastName"+i),
@@ -45,15 +52,24 @@ public class AddressBookTest {
     void testAddressBookGetEntriesAndSetters() {
         defaultAddressBook();
 
-        assertEquals(addressBook.getEntries().get(addressBook.getEntries().size()-1), entry9);
+        assertEquals(addressBook.getEntries().get(addressBook.getEntries().size()-1).toString(), entry9.toString());
     }
 
     @Test
     void testAddressBookGetters() {
-        assertTrue(addressBook.getEntryByLastName("lastName0").equals(addressBook.getEntryByLastName("firstName0"))&&
-                addressBook.getEntryByPhoneNumber(new PhoneNumber("00000")).equals(addressBook.getEntryByEmailAddress(new Email("example.foo0@mail.com")))&&
-                addressBook.getEntryByAddress(new Address("country"+0,"region"+0,"city"+0,"street"+0,"house"+0)).equals(
-                        addressBook.getEntryByEmailAddress(new Email("example.foo0@mail.com")))
-        );
+        defaultAddressBook();
+        assertEquals(addressBook.getEntryByLastName("lastName0"),addressBook.getEntryByEmailAddress(new Email("example.foo0@mail.com")));
+        assertEquals(addressBook.getEntryByPhoneNumber(new PhoneNumber("00000")), addressBook.getEntryByEmailAddress(new Email("example.foo0@mail.com")));
+        assertEquals(addressBook.getEntryByAddress(new Address("country"+0,"region"+0,"city"+0,"street"+0,"house"+0)),
+                addressBook.getEntryByEmailAddress(new Email("example.foo0@mail.com")));
+    }
+
+    @Test
+    void testAddressBookToString() {
+        assertEquals(entry9.toString(),
+                entry9.getName().getFirstName() + " " + entry9.getName().getLastName()+":\n"+
+                entry9.getAddress().toString()+";\n"+
+                entry9.getPhoneNumber().toString()+";\n"+
+                entry9.getEmail().toString());
     }
 }

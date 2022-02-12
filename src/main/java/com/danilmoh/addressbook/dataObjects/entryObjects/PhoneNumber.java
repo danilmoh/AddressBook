@@ -8,13 +8,13 @@ public class PhoneNumber extends UniqueContactInfo<Long> {
         super(1);
         NonNullArrayRequirer.requireNonNull(number);
 
-        super.info.set(0, Long.parseLong(number));
+        super.info.add(Long.parseLong(number));
     }
 
     public PhoneNumber(Long number) {
         super(1);
         NonNullArrayRequirer.requireNonNull(number);
-        super.info.set(0, number);
+        super.info.add(number);
     }
 
     @Override
@@ -22,6 +22,11 @@ public class PhoneNumber extends UniqueContactInfo<Long> {
         NonNullArrayRequirer.requireNonNull(objects);
 
         if (objects[0]!=null) super.info.set(0, objects[0]);
+    }
+
+    @Override
+    public String toString() {
+        return getValue().toString();
     }
 
     public void setValue(Long number) {

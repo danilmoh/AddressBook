@@ -15,7 +15,7 @@ public class EmailValidatorTest {
     }
 
     @ParameterizedTest
-    @CsvSource({"abrakadabra@gmail.com","holivoodmovie@@.us", "foo@bar", "foobar"})
+    @CsvSource({"abrakadabra@gmail","holivoodmovie@@.us", "foo@bar", "foobar"})
     void shouldBeInvalidEmail(String email) {
         assertFalse(EmailValidator.isValidEmail(email));
     }

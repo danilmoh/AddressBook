@@ -24,3 +24,6 @@ hs_err_pid*
 
 # ide configuration
 .idea
+# test entry files
+*.csv
+AddressBookDefaultSavePath

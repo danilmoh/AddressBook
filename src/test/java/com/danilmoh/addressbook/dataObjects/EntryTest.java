@@ -6,8 +6,7 @@ import com.danilmoh.addressbook.dataObjects.entryObjects.Name;
 import com.danilmoh.addressbook.dataObjects.entryObjects.PhoneNumber;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class EntryTest {
 
@@ -27,7 +26,7 @@ public class EntryTest {
         Name nullName = null;
         Name newName = new Name("hello", "world");
         defaultEntry();
-        entry.setName(nullName);
+        Exception exception = assertThrows(NullPointerException.class, () -> entry.setName(nullName));
 
         assertEquals(entry.getName(), name);
 
@@ -41,7 +40,7 @@ public class EntryTest {
         Address nullAddress = null;
         Address newAddress = new Address("hello", "world", "wello", "horld","home");
         defaultEntry();
-        entry.setAddress(nullAddress);
+        Exception exception = assertThrows(NullPointerException.class, () -> entry.setAddress(nullAddress));
 
         assertEquals(entry.getAddress(), address);
 
@@ -55,7 +54,7 @@ public class EntryTest {
         PhoneNumber nullNumber = null;
         PhoneNumber newNumber = new PhoneNumber("+987654321");
         defaultEntry();
-        entry.setPhoneNumber(nullNumber);
+        Exception exception = assertThrows(NullPointerException.class, () -> entry.setPhoneNumber(nullNumber));
 
         assertEquals(entry.getPhoneNumber(), number);
 
@@ -69,7 +68,7 @@ public class EntryTest {
         Email nullEmail = null;
         Email newEmail = new Email("new.email@example.com");
         defaultEntry();
-        entry.setEmail(nullEmail);
+        Exception exception = assertThrows(NullPointerException.class, () -> entry.setEmail(nullEmail));
 
         assertEquals(entry.getEmail(), email);
 

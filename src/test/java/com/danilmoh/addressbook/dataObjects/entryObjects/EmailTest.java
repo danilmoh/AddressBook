@@ -1,6 +1,5 @@
 package com.danilmoh.addressbook.dataObjects.entryObjects;
 
-import com.danilmoh.addressbook.dataObjects.entryObjects.Email;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -18,13 +17,13 @@ public class EmailTest {
     }
 
     @Test
-    void setInfoAddsOnlyValidAddresses(String address) {
+    void setInfoAddsOnlyValidAddresses() {
         // Given
         String invalidAddress = "foobar@foo";
         String validAddress = "example@gmail.ru";
         Email e1 = new Email("helloworld@gmail.com");
         e1.setInfo(val);
-        e1.setInfo(address);
+        e1.setInfo(invalidAddress);
         Email e2 = new Email(validAddress);
         e2.setInfo(validAddress);
 
@@ -34,11 +33,11 @@ public class EmailTest {
 
         // Then
         assertTrue(didNotSet);
-        assertFalse(setNewAddress);
+        assertTrue(setNewAddress);
     }
 
     @Test
-    void setterAddsOnlyValidAddresses(String address) {
+    void setterAddsOnlyValidAddresses() {
         // Given
         String invalidAddress = "foobar@foo";
         String validAddress = "example@gmail.com";
@@ -54,7 +53,7 @@ public class EmailTest {
 
         // Then
         assertTrue(didNotSet);
-        assertFalse(setNewAddress);
+        assertTrue(setNewAddress);
     }
 
     @Test
@@ -75,7 +74,7 @@ public class EmailTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"foobar@foo", "example@gmail.com"})
+    @ValueSource(strings = {"foobar@foo.com", "example@gmail.com"})
     void getterShouldWork(String address) {
         email.setValue(address);
         assertEquals(email.getValue(), address);

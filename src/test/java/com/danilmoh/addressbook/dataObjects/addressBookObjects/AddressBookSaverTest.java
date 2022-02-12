@@ -20,13 +20,14 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class AddressBookSaverTest {
 
-    String defaultSavePath = System.getProperty("user.dir");
+    String defaultSavePath = DefaultSavePath.SAVE_PATH.getPath();
 
     AddressBookSaver saver ;
     List<AddressBook> addressBooks;
 
     @BeforeEach
     void setup() {
+        this.addressBooks = new ArrayList<>();
         defaultAddressBooks();
         this.saver = new AddressBookSaver(addressBooks);
     }
@@ -36,12 +37,12 @@ public class AddressBookSaverTest {
         for(int i = 0; i < 3; i++) {
 
             AddressBook current = new AddressBook("new"+i);
-            for (int j = 0; j < 2; j++) {
+            for (int j = 0; j < 3; j++) {
                 String idStr = "("+i+";"+j+")";
                 current.addEntry(new Entry(
                         new Name("first"+idStr, "last"+idStr),
                         new Address("country"+idStr, "region"+idStr,"city"+idStr,"street"+idStr,"house"+idStr),
-                        new PhoneNumber("+1234567"+idStr),
+                        new PhoneNumber("+1234567"+i+j),
                         new Email("example"+i+j+"@gmail.com")
                 ));
             }
@@ -66,18 +67,19 @@ public class AddressBookSaverTest {
     @Test
     void shouldSaveThreeFilesIntoTheCustomFolder() {
         defaultAddressBooks();
-        String customDir = System.getProperty("user.home") + System.getProperty("file.separator") + "addresses.csv";
+        String customDir = System.getProperty("user.home") + System.getProperty("file.separator") + "addresses";
         File customDirFile = new File(customDir);
-        boolean dirCreated = customDirFile.mkdir();
-        System.out.println("Custom directory has been created, " + dirCreated);
-
-        this.saver = new AddressBookSaver(addressBooks, customDir);
+        if(!customDirFile.exists()){
+            boolean dirCreated = customDirFile.mkdir();
+            System.out.println("Custom directory has been created, " + dirCreated);
+        }
+        this.saver = new AddressBookSaver(addressBooks, customDir+System.getProperty("file.separator"));
         saver.save();
 
         String name = "new"+0, name1=  "new"+1, name2 = "new"+2;
-        File file = new File(customDir+name),
-                file1 = new File(customDir+name1),
-                file2 = new File(customDir+name2);
+        File file = new File(customDir+System.getProperty("file.separator")+name+".csv"),
+                file1 = new File(customDir+System.getProperty("file.separator")+name1+".csv"),
+                file2 = new File(customDir+System.getProperty("file.separator")+name2+".csv");
 
         assertTrue(file.exists());
         assertTrue(file1.exists());
@@ -85,17 +87,14 @@ public class AddressBookSaverTest {
     }
 
     @Test
-    void savedFilesShouldContainEntityData() {
+    void savedFilesShouldContainEntryData() {
         // saving books into default path
         defaultAddressBooks();
-        this.saver = new AddressbookSaver(addressBooks);
+        this.saver = new AddressBookSaver(addressBooks);
         saver.save();
         // getting the address books files by names
         String bookName = "new"+0, bookName1=  "new"+1, bookName2 = "new"+2;
         String saveDir = defaultSavePath+System.getProperty("file.separator");
-        File file = new File(saveDir+bookName),
-                file1 = new File(saveDir+bookName1),
-                file2 = new File(saveDir+bookName2);
 
         // initializing address book arrayList to save data into
         List<AddressBook> currentAddressBooks = new ArrayList<>();
@@ -106,7 +105,6 @@ public class AddressBookSaverTest {
         // fetching data from csv files
         for(int i = 0 ; i < 3; i++) {
             try(Scanner scanner = new Scanner(Paths.get(saveDir+"new"+i+".csv"))) {
-                int entryCount = 0;
                 while(scanner.hasNextLine()) {
                     String[] data = scanner.nextLine().split(",");
                     Name name = new Name(data[0], data[1]);
@@ -116,13 +114,11 @@ public class AddressBookSaverTest {
 
                     Entry entry = new Entry(name,address,number, email);
                     currentAddressBooks.get(i).addEntry(entry);
-                    entryCount++;
                 }
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
-            assertEquals(currentAddressBooks.get(0).getEntryByLastName("last2"), addressBooks.get(0).getEntryByLastName("last2"));
+            assertEquals(addressBooks.get(0).getEntryByLastName("last(0;1)").toString(), currentAddressBooks.get(0).getEntryByLastName("last(0;1)").toString());
         }
     }
 }

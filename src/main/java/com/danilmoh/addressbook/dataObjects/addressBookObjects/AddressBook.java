@@ -11,13 +11,13 @@ import static com.danilmoh.addressbook.services.NonNullArrayRequirer.requireNonN
 
 public class AddressBook {
     private final String name;
-    private List<Entry> entries;
-    private Set<Entry> entrySet;
+    private final List<Entry> entries;
+    private final Set<Entry> entrySet;
 
-    private Map<String, Entry> lastNameMap;
-    private Map<Address, Entry> addressMap;
-    private Map<PhoneNumber, Entry> phoneNumberMap;
-    private Map<Email, Entry> emailMap;
+    private final Map<String, Entry> lastNameMap;
+    private final Map<Address, Entry> addressMap;
+    private final Map<PhoneNumber, Entry> phoneNumberMap;
+    private final Map<Email, Entry> emailMap;
 
     public AddressBook(String name) {
         this.name = name;

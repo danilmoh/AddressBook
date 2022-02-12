@@ -1,11 +1,9 @@
 package com.danilmoh.addressbook.dataObjects.entryObjects;
 
-import com.danilmoh.addressbook.dataObjects.entryObjects.PhoneNumber;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class PhoneNumberTest {
 
@@ -72,5 +70,11 @@ public class PhoneNumberTest {
 
         // Then
         assertEquals(number.getValue(), val);
+    }
+
+    @Test
+    void toStringShouldWork() {
+        PhoneNumber number = new PhoneNumber(val);
+        assertEquals(number.toString(), number.getValue().toString());
     }
 }
