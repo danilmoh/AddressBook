@@ -41,7 +41,6 @@ public class AddressBookFetcher {
         Arrays.sort(files);
         if (files.length > 0) {
             for(File file : files) {
-                System.out.println();
                 if(file.isFile() && file.toPath().toString().endsWith(".csv") && file.exists()) {
                     AddressBook currentBook = new AddressBook(file.getName());
                     try(Scanner scanner = new Scanner(file.toPath())) {
