@@ -20,6 +20,36 @@ public class Entry {
         this.email = email;
     }
 
+
+
+    public String getFirstName() {
+        return this.name.getFirstName();
+    }
+
+    public String getLastName() {
+        return this.name.getLastName();
+    }
+
+    public String getCountry() {
+        return this.address.getCountry();
+    }
+
+    public String getRegion() {
+        return this.address.getRegion();
+    }
+
+    public String getCity() {
+        return this.address.getCity();
+    }
+
+    public String getStreet() {
+        return this.address.getStreet();
+    }
+
+    public String getHouse() {
+        return this.address.getHouse();
+    }
+
     public Name getName() {
         return name;
     }
@@ -38,20 +68,36 @@ public class Entry {
         this.address = address;
     }
 
-    public PhoneNumber getPhoneNumber() {
+    public String getPhoneNumber() {
+        return this.phoneNumber.toString();
+    }
+
+    public void setPhoneNumber(String value) {
+        this.phoneNumber.setValue(value);
+    }
+
+    public String getEmail() {
+        return this.email.toString();
+    }
+
+    public void setEmail(String value) {
+        this.email.setValue(value);
+    }
+
+    public PhoneNumber getPhoneNumberObj() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(PhoneNumber phoneNumber) {
+    public void setPhoneNumberObj(PhoneNumber phoneNumber) {
         requireNonNull(phoneNumber);
         this.phoneNumber = phoneNumber;
     }
 
-    public Email getEmail() {
+    public Email getEmailObj() {
         return email;
     }
 
-    public void setEmail(Email email) {
+    public void setEmailObj(Email email) {
         requireNonNull(email);
         this.email = email;
     }

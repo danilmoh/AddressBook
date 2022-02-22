@@ -1,7 +1,7 @@
 package com.danilmoh.addressbook.GUI.AddressBookHistory;
 
 import com.danilmoh.addressbook.dataObjects.addressBookObjects.DefaultSavePath;
-import com.danilmoh.addressbook.dataObjects.addressBookObjects.LastSavePath;
+import com.danilmoh.addressbook.dataObjects.addressBookObjects.LastSaveFilePath;
 
 import java.io.IOException;
 import java.nio.file.Paths;
@@ -11,7 +11,7 @@ public class AddressBookHistoryFetcher {
     private final String lastPathFile;
 
     public AddressBookHistoryFetcher() {
-        this.lastPathFile = LastSavePath.LAST_SAVE_PATH.getPath();
+        this.lastPathFile = LastSaveFilePath.LAST_SAVE_PATH.getPath();
     }
 
     public String fetchLastPath() {

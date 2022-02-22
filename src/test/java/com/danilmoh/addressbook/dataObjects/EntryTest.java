@@ -54,13 +54,13 @@ public class EntryTest {
         PhoneNumber nullNumber = null;
         PhoneNumber newNumber = new PhoneNumber("+987654321");
         defaultEntry();
-        Exception exception = assertThrows(NullPointerException.class, () -> entry.setPhoneNumber(nullNumber));
+        Exception exception = assertThrows(NullPointerException.class, () -> entry.setPhoneNumberObj(nullNumber));
 
-        assertEquals(entry.getPhoneNumber(), number);
+        assertEquals(entry.getPhoneNumberObj(), number);
 
-        entry.setPhoneNumber(newNumber);
+        entry.setPhoneNumberObj(newNumber);
 
-        assertEquals(entry.getPhoneNumber(), newNumber);
+        assertEquals(entry.getPhoneNumberObj(), newNumber);
     }
 
     @Test
@@ -68,13 +68,13 @@ public class EntryTest {
         Email nullEmail = null;
         Email newEmail = new Email("new.email@example.com");
         defaultEntry();
-        Exception exception = assertThrows(NullPointerException.class, () -> entry.setEmail(nullEmail));
+        Exception exception = assertThrows(NullPointerException.class, () -> entry.setEmailObj(nullEmail));
 
-        assertEquals(entry.getEmail(), email);
+        assertEquals(entry.getEmailObj(), email);
 
-        entry.setEmail(newEmail);
+        entry.setEmailObj(newEmail);
 
-        assertEquals(entry.getEmail(), newEmail);
+        assertEquals(entry.getEmailObj(), newEmail);
     }
 
     @Test

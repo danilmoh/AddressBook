@@ -9,20 +9,19 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="442.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="314.0" prefWidth="438.0" spacing="10.0" BorderPane.alignment="CENTER">
          <children>
-            <TextField minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="267.0" text="First name" />
-            <TextField text="Last name" />
-            <TextField text="Phone number" />
-            <TextField text="Email" />
-            <TextField text="Country" />
-            <TextField text="Region" />
-            <TextField text="City" />
-            <TextField text="Street" />
-            <TextField text="House number" />
+            <TextField fx:id="firstNameField" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="267.0" promptText="First name" text="First name" />
+            <TextField fx:id="lastNameField" promptText="Last name" text="First name" />
+            <TextField fx:id="phoneField" promptText="Phone number" text="12345" />
+            <TextField fx:id="emailField" promptText="Email" text="example@email.ru" />
+            <TextField fx:id="countryField" promptText="Country" text="First name" />
+            <TextField fx:id="regionField" promptText="Region" text="First name" />
+            <TextField fx:id="cityField" promptText="City" text="First name" />
+            <TextField fx:id="streetField" promptText="Street" text="First name" />
+            <TextField fx:id="houseField" promptText="House number" text="First name" />
          </children>
          <BorderPane.margin>
             <Insets left="10.0" right="10.0" top="10.0" />
@@ -32,7 +31,7 @@
    <bottom>
       <HBox alignment="CENTER" prefHeight="17.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="92.0" text="Add">
+            <Button fx:id="addButton" mnemonicParsing="false" onAction="#handleAddButtonAction" prefHeight="26.0" prefWidth="92.0" text="Add">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>

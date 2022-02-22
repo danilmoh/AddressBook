@@ -30,30 +30,32 @@ public class AddressBookSaver {
             this.savePath = DefaultSavePath.SAVE_PATH.getPath();
 
         this.books = books;
+
     }
 
     public void save() {
         for(AddressBook book : books) {
-            String fileName = savePath+book.getName()+".csv";
+            String fileName = savePath +
+                    (savePath.endsWith(System.getProperty("file.separator")) ? "" : System.getProperty("file.separator")) +
+                    book.getName()+".csv";
             try {
                 File saveFile = new File(fileName);
-                boolean fileCreated = saveFile.createNewFile();
-                if(fileCreated) {
-                    FileWriter writer = new FileWriter(saveFile);
-                    List<Entry> currentEntries = book.getEntries();
-                    for(Entry entry : currentEntries) {
-                        StringBuilder entryString = new StringBuilder();
-                        entryString.append(entry.getName().getFirstName()).append(",").append(entry.getName().getLastName()).append(",")
-                                .append(entry.getAddress().getCountry()).append(",").append(entry.getAddress().getRegion()).append(",")
-                                .append(entry.getAddress().getCity()).append(",").append(entry.getAddress().getStreet()).append(",")
-                                .append(entry.getAddress().getHouse()).append(",").append(entry.getPhoneNumber().getValue()).append(",")
-                                .append(entry.getEmail().getValue());
-                        writer.write(entryString + "\n");
-                    }
-                    writer.close();
+                if (!saveFile.exists()){
+                    saveFile.createNewFile();
                 }
+                FileWriter writer = new FileWriter(saveFile);
+                List<Entry> currentEntries = book.getEntries();
+                for(Entry entry : currentEntries) {
+                    String entryString = entry.getName().getFirstName() + "," + entry.getName().getLastName() + "," +
+                            entry.getAddress().getCountry() + "," + entry.getAddress().getRegion() + "," +
+                            entry.getAddress().getCity() + "," + entry.getAddress().getStreet() + "," +
+                            entry.getAddress().getHouse() + "," + entry.getPhoneNumberObj().getValue() + "," +
+                            entry.getEmailObj().getValue();
+                    writer.write(entryString + "\n");
+                }
+                writer.close();
             } catch (IOException e) {
-                e.printStackTrace();
+                System.out.println(e.getMessage());
             }
         }
     }

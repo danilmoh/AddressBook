@@ -69,7 +69,7 @@ public class AddressBookTest {
         assertEquals(entry9.toString(),
                 entry9.getName().getFirstName() + " " + entry9.getName().getLastName()+":\n"+
                 entry9.getAddress().toString()+";\n"+
-                entry9.getPhoneNumber().toString()+";\n"+
-                entry9.getEmail().toString());
+                entry9.getPhoneNumberObj().toString()+";\n"+
+                entry9.getEmailObj().toString());
     }
 }

@@ -40,8 +40,8 @@ public class AddressBook {
             this.entries.add(entry);
             this.lastNameMap.put(entry.getName().getLastName(), entry);
             this.addressMap.put(entry.getAddress(), entry);
-            this.phoneNumberMap.put(entry.getPhoneNumber(), entry);
-            this.emailMap.put(entry.getEmail(), entry);
+            this.phoneNumberMap.put(entry.getPhoneNumberObj(), entry);
+            this.emailMap.put(entry.getEmailObj(), entry);
         }
     }
 

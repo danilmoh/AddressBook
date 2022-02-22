@@ -50,13 +50,11 @@ public class AddressBookFetcherTest {
             try (FileWriter writer = new FileWriter(path+addressBook.getName()+".csv")) {
                 List<Entry> entries = addressBook.getEntries();
                 for (Entry entry : entries) {
-                    StringBuilder builder = new StringBuilder();
-                    Entry current = entry;
-                    builder.append(current.getName().getFirstName()).append(",").append(current.getName().getLastName()).append(",")
-                            .append(current.getAddress().getCountry()).append(",").append(current.getAddress().getRegion()).append(",")
-                            .append(current.getAddress().getCity()).append(",").append(current.getAddress().getStreet()).append(",")
-                            .append(current.getAddress().getHouse()).append(",").append(current.getPhoneNumber().getValue()).append(",")
-                            .append(current.getEmail().getValue());
+                    String builder = entry.getName().getFirstName() + "," + entry.getName().getLastName() + "," +
+                            entry.getAddress().getCountry() + "," + entry.getAddress().getRegion() + "," +
+                            entry.getAddress().getCity() + "," + entry.getAddress().getStreet() + "," +
+                            entry.getAddress().getHouse() + "," + entry.getPhoneNumberObj().getValue() + "," +
+                            entry.getEmailObj().getValue();
                     writer.write(builder + "\n");
                 }
             } catch (IOException e) {

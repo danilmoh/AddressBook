@@ -1,6 +1,6 @@
 package com.danilmoh.addressbook.GUI.AddressBookHistory;
 
-import com.danilmoh.addressbook.dataObjects.addressBookObjects.LastSavePath;
+import com.danilmoh.addressbook.dataObjects.addressBookObjects.LastSaveFilePath;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -11,7 +11,7 @@ import static com.danilmoh.addressbook.services.NonNullArrayRequirer.requireNonN
 
 // saves last used folder with address books
 public class AddressBookHistorySaver {
-    private final String lastPathFile = LastSavePath.LAST_SAVE_PATH.getPath();
+    private final String lastPathFile = LastSaveFilePath.LAST_SAVE_PATH.getPath();
 
     public void saveLastPath(Path folderToRemember){
         requireNonNull(folderToRemember);

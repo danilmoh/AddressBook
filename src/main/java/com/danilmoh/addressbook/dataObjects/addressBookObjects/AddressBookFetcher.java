@@ -42,7 +42,7 @@ public class AddressBookFetcher {
         if (files.length > 0) {
             for(File file : files) {
                 if(file.isFile() && file.toPath().toString().endsWith(".csv") && file.exists()) {
-                    AddressBook currentBook = new AddressBook(file.getName());
+                    AddressBook currentBook = new AddressBook(file.getName().replaceFirst("[.][^.]+$", ""));
                     try(Scanner scanner = new Scanner(file.toPath())) {
                         while(scanner.hasNextLine()) {
                             String[] data = scanner.nextLine().split(",");

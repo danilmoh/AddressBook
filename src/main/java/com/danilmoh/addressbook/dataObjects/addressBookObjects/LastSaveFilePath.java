@@ -1,12 +1,12 @@
 package com.danilmoh.addressbook.dataObjects.addressBookObjects;
 
-public enum LastSavePath {
+public enum LastSaveFilePath {
     LAST_SAVE_PATH(System.getProperty("user.dir")+System.getProperty("file.separator")+
             "lastPath.csv");
 
     private final String path;
 
-    LastSavePath(String s) {
+    LastSaveFilePath(String s) {
         this.path = s;
     }
 
