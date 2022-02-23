@@ -11,4 +11,6 @@ module com.danilmoh.addressbook.GUI {
     exports com.danilmoh.addressbook.dataObjects;
     exports com.danilmoh.addressbook.dataObjects.entryObjects;
     exports com.danilmoh.addressbook.dataObjects.addressBookObjects;
+    exports com.danilmoh.addressbook.GUI.Services;
+    opens com.danilmoh.addressbook.GUI.Services to javafx.fxml;
 }
