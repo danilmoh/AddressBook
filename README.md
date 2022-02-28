@@ -8,4 +8,4 @@ The following parameters are considered in the address book entry:
 
 It is possible to sort entries by any paramenter.
 
-The goal of the project is to recall Junit5 test driven development, uml desiging and handling a lot of local files
+The goal of the project is to recall Junit5 test driven development, uml desiging and handling of a lot of local files
